@@ -1,0 +1,77 @@
+
+.login {
+    display: flex;
+    flex-direction: column;
+    
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.login h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Champs de saisie */
+.login-form input {
+    width:93%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+form input:focus {
+    border: 1px solid #007bff;
+    outline: none;
+}
+
+/* Boutons */
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-form button:hover {
+    background: #0056b3;
+}
+
+/* Messages */
+.login p {
+    margin-top: 15px;
+    color: #ff4d4d;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.register-link{
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 12px;
+}
+
