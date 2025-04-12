@@ -1,0 +1,63 @@
+.card-cours{
+    display: flex;  
+    flex-direction: column;
+    /* width: 350px; */
+    width: 70%;
+    margin: auto;
+    /* margin: 50px auto; */
+    padding: 20px;
+    background: white;
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    text-align: center;
+}
+
+.card-cours-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-cours-footer span{    
+    font-size: 1.2rem;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 25px;
+}
+
+.card-cours-footer button{
+    color: black;
+    border: 2px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.card-cours-footer button:hover{
+    background-color: #007bff;
+    color: white;
+}
+
+.card-cours-content h3 {
+    color: #333;
+}
+
+.card-cours-content p, .card-cours-footer span{
+    color: #666;
+    font-size: 1rem;
+}
+
+.cours-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: start;
+    gap: 20px;
+}
+
+.cours h2{
+    margin-bottom: 15px;
+}

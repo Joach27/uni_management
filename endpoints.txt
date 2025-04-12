@@ -1,0 +1,17 @@
+#Route pour afficher les cours semestriels d'un ensignant
+# @app.route('/api/enseignant/<int:enseignant_id>/cours_semestriel', methods=['GET'])
+# def get_cours_semestriel_enseignant(enseignant_id):
+#     cours_semestriel = CoursSemestriel.query.filter_by(enseignant_id=enseignant_id).all()
+#     return jsonify([cours_semestriel.to_dict() for cours_semestriel in cours_semestriel])
+
+
+# # Routes pour afficher les séances d'un enseignant
+# @app.route('/api/enseignant/<int:enseignant_id>/seances', methods=['GET'])
+# def get_seances_enseignant(enseignant_id):
+#     cours_semestriels = CoursSemestriel.query.filter_by(enseignant_id=enseignant_id).all()
+    
+#     seances = []
+#     for cs in cours_semestriels:
+#         seances.extend(Seance.query.filter_by(cours_semestriel_id=cs.id).all())
+    
+#     return jsonify([s.to_dict() for s in seances]), 200

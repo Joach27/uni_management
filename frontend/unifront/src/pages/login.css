@@ -27,7 +27,7 @@
 }
 
 /* Champs de saisie */
-.login-form input {
+.login-form input, .login-form select {
     width:93%;
     padding: 10px;
     margin: 8px 0;
@@ -75,3 +75,15 @@ form input:focus {
     font-size: 12px;
 }
 
+
+.retour{
+    font-size: 11px;
+}
+
+.login_link_home{
+    color: #007bff;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 15px;
+}

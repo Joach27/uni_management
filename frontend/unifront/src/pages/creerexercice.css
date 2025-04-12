@@ -1,0 +1,44 @@
+.creer-exercice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding-bottom: 50px;
+}
+
+.form-creer-exercice input, 
+.form-creer-exercice select,
+.form-creer-exercice textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+.form-creer-exercice button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.form-creer-exercice{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    gap: 20px;
+}
+
+.form-creer-exercice label{
+    color: #333;
+    text-align: left;
+}

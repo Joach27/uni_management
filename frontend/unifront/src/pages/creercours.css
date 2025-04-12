@@ -1,0 +1,101 @@
+.creer-cours {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding-bottom: 50px;
+}
+
+.form-creation-cours {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    width: 400px;
+    gap: 20px;
+}
+
+.form-creation-cours input, .form-creation-cours textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+.form-creation-cours label{
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+}
+
+.form-creation-cours button {
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+/* COURS SEMESTRIEL */ /* SEANCE*/
+.creer-cours-semestriel, 
+.creer-seance{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.form-creation-cours-semestriel, 
+.form-creer-seance{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    width: 400px;
+    padding-bottom: 50px;
+    gap: 10px;
+}
+
+.form-creation-cours-semestriel input, 
+.form-creation-cours-semestriel select,
+.form-creer-seance input,
+.form-creer-seance select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    transition: border 0.3s;
+    box-sizing: border-box;
+}
+
+.form-creation-cours-semestriel button,
+.form-creer-seance button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-creation-cours-semestriel div{
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+.form-creation-cours-semestriel label,
+.form-creer-seance label{
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+}

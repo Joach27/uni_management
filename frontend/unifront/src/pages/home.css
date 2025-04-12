@@ -62,16 +62,16 @@ p {
 /* Dashboard.css */
 .dashboard {
     text-align: center;
-    margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard h2 {
-    margin-bottom: 20px;
     color: #333;
+}
+
+.dashboard p {
+    color: #555;
+    font-weight: 400;
 }
 
 .logout-btn {
