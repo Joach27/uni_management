@@ -17,11 +17,22 @@ def get_cours():
 
 # Routes pour afficher tous les cours semestriels
 @app.route('/api/cours_semestriel', methods=['GET'])
+@jwt_required()
 def get_cours_semestriel():
     cours_semestriel = CoursSemestriel.query.all()
+    email = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=email).first()
+    eleve = Eleve.query.filter_by(utilisateur_id=utilisateur.id).first()
+    
     
     results = []
     for cs in cours_semestriel:
+        inscrit = ''
+        if Inscription.query.filter_by(eleve_id=eleve.id, cours_semestriel_id=cs.id).first():
+            inscrit = 'oui'
+        else:   
+            inscrit = 'non'
+            
         results.append({
         'id': cs.id,
         'annee': cs.annee,
@@ -32,7 +43,8 @@ def get_cours_semestriel():
             'description': cs.cours.description,
             'heures': cs.cours.heures,
             'type': cs.cours.type
-        }
+        },
+        'inscrit': inscrit
         })
     return jsonify(results)
 
@@ -96,21 +108,36 @@ def create_eleve():
     return jsonify({'message': 'Eleve créé avec succès'}) , 201
 
 # Routes pour afficher tous les eleves
-@app.route('/api/eleve', methods=['GET'])
+@app.route('/api/eleves', methods=['GET'])
+@jwt_required()
 def get_eleves():
     eleves = Eleve.query.all()
+    
+    user_mail = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
     return jsonify([eleve.to_dict() for eleve in eleves])
 
 # Route pour modifier un eleve
 @app.route('/api/eleve/<int:eleve_id>', methods=['PUT'])
+@jwt_required()
 def update_eleve(eleve_id):
     data = request.get_json()
+    
+    user_mail = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
     eleve = Eleve.query.get(eleve_id)
     if eleve:
-        eleve.utilisateur_id = data['utilisateur_id']
+
         eleve.prenom = data['prenom']
         eleve.nom = data['nom']
         eleve.annee = data['annee']
+        
         db.session.commit()
         return jsonify({'message': 'Eleve modifié avec succès'})
     else:
@@ -118,8 +145,15 @@ def update_eleve(eleve_id):
 
 # Supprimer un eleve
 @app.route('/api/eleve/<int:eleve_id>', methods=['DELETE'])
+@jwt_required()
 def delete_eleve(eleve_id):
     eleve = Eleve.query.get(eleve_id)
+    
+    user_mail = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
     if eleve:
         db.session.delete(eleve)
         db.session.commit()
@@ -191,21 +225,37 @@ def create_enseignant():
 
 # Routes pour afficher tous les enseignants
 @app.route('/api/enseignants', methods=['GET'])
+# @jwt_required()
 def get_enseignants():
     enseignants = Enseignant.query.all()
+    
+    # user_mail = get_jwt_identity()
+    # utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    
+    # if utilisateur.role != 'Secretaire':
+    #     return jsonify({'message': 'Accès non autorisé'}), 403
+    
     return jsonify([enseignant.to_dict() for enseignant in enseignants])
 
 # Route pour modifier un enseignant
 @app.route('/api/enseignant/<int:enseignant_id>', methods=['PUT'])
+@jwt_required()
 def update_enseignant(enseignant_id):
     data = request.get_json()
+    
+    user_mail = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
     enseignant = Enseignant.query.get(enseignant_id)    
     if enseignant:
-        enseignant.utilisateur_id = data['utilisateur_id']
+        
         enseignant.prenom = data['prenom']
         enseignant.nom = data['nom']
         enseignant.telephone = data['telephone']
         enseignant.fonction = data['fonction']
+        
         db.session.commit() 
         return jsonify({'message': 'Enseignant modifié avec succès'})
     else:
@@ -213,8 +263,15 @@ def update_enseignant(enseignant_id):
     
 # Supprimer un enseignant
 @app.route('/api/enseignant/<int:enseignant_id>', methods=['DELETE'])
+@jwt_required()
 def delete_enseignant(enseignant_id):
     enseignant = Enseignant.query.get(enseignant_id)
+    
+    user_mail = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
     if enseignant:
         db.session.delete(enseignant)
         db.session.commit()
@@ -304,15 +361,6 @@ def create_seance():
 
 
 ############### EXAMEN ####################
-# Route pour créer un examen*
-@app.route('/api/examen', methods=['POST'])
-def create_examen():
-    data = request.get_json()
-    examen = Examen(cours_semestriel_id=data['cours_semestriel_id'], type_examen=data['type_examen'], date=data['date'])
-    db.session.add(examen)
-    db.session.commit()
-    
-    return jsonify({'message': 'Examen cree avec success'}) , 201
 
 # Un enseignant crée un examen
 @app.route('/api/examen/creer', methods=['POST'])
@@ -473,17 +521,24 @@ def get_examens_eleve():
     return jsonify(result), 200
 
 
-
-
-# Route attribuer une note à un examen
-@app.route('/api/examen/<int:examen_id>/note', methods=['POST'])
-def attribuer_note_examen(examen_id):
-    data = request.get_json()
-    note = NoteExamen(examen_id=examen_id, eleve_id=data['eleve_id'], note=data['note'], explication=data['explication'])
-    db.session.add(note)
-    db.session.commit()
+# Route pour supprimer un examen
+@app.route('/api/examen/<int:examen_id>', methods=['DELETE'])
+@jwt_required()
+def delete_examen(examen_id):
+    examen = Examen.query.get(examen_id)
     
-    return jsonify({'message': 'Note attribuer avec success'})
+    email = get_jwt_identity()
+    utilisateur = Utilisateur.query.filter_by(email=email).first()
+    
+    if not utilisateur or utilisateur.role != 'Enseignant':
+        return jsonify({'message': 'Accès non autorisé'}), 403
+    
+    if not examen:
+        return jsonify({'message': 'Examen non trouve'}), 404
+    db.session.delete(examen)
+    db.session.commit()
+    return jsonify({'message': 'Examen supprimer avec success'})
+
 
 
 ############## NOTEEXAMEN ##################
@@ -524,19 +579,7 @@ def delete_note_examen(examen_id, eleve_id):
     else:
         return jsonify({'message': 'Note non trouvee'}), 404
     
-# Route pour qu'un enseignant donne une note à un élève
-# @app.route("/api/enseignant/note/eleve" , methods=['POST'])
-# @jwt_required
-# def attribuer_note_eleve():
-#     email = get_jwt_identity()
-#     utilisateur = Utilisateur.query.filter_by(email=email).first()
-#     if utilisateur.role != "Enseignant":
-#         return jsonify({'message': 'Accès non autorisé'}), 403
-#     cours_semestriels = CoursSemestriel.query.filter_by(enseignant_id=utilisateur.id).all()
-    
-#     cours_semestriels_ids = [cours_semestriel.id for cours_semestriel in cours_semestriels]
-    
-#     cours_eleve_inscrit = []
+
    
 
 ############## EXERCICE ##################
@@ -800,9 +843,16 @@ jwt = JWTManager()
 #     return jsonify({'message': 'Eleve enregistré avec succès!'}), 201
 
 @app.route('/inscription', methods=['POST'])
+@jwt_required
 def inscrire():
     data = request.get_json()
     user = Utilisateur.query.filter_by(email=data['email']).first()
+    
+    # Accès
+    user_mail = get_jwt_identity()
+    Utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    if not Utilisateur or Utilisateur.role != 'Secretaire':
+        return jsonify({'message': 'Accès non autorisé'}), 403
     
     if user: 
         return jsonify({'message': 'Un utilisateur avec cet email existe déjà!'}), 400

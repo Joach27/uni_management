@@ -16,6 +16,11 @@ import ExercicesEleve from "./ExercicesEleve";
 import Examen from "../components/Examen";
 import VoirExamen from "../components/VoirExamen";
 import VoirExamenEleve from "../components/VoirExamenEleve";
+import NoteExamen from "../components/NoteExamen";
+import ExamenEtudiant from "../components/ExamenEtudiant";
+import ListeEleves from "../components/ListeEleves";
+import ListeEnseignants from "../components/ListeEnseignants";
+import EtudiantImage from '../assets/étudiants-av.png';
 
 
 
@@ -35,8 +40,8 @@ const Dashboard = () => {
                 return <CreerCoursSemestriel />;    
             case "noteExercice":
                 return <p>Vous avez choisi de voir les notes d'un exercice.</p>;
-            case "noteExamen":
-                return <p>Vous avez choisi de voir les notes d'un examen.</p>;
+            case "noteExamenEnseignant":
+                return <NoteExamen />;
             case "creerSeance":
                 return <CreerSeance />;
             case "modifierNoteExercice":
@@ -52,7 +57,7 @@ const Dashboard = () => {
             case "voirSeanceEnseignant":
                 return <SeancesEnseignant />;
             case "voirNote":
-                return <p>Vous avez choisi de voir les notes.</p>;
+                return <ExamenEtudiant />;
             case "voirExercice":
                 return <ExercicesEleve />;
             case "ajouterUtilisateur":
@@ -68,11 +73,18 @@ const Dashboard = () => {
             case "voirExamens":
                 return <VoirExamenEleve />;
 
+            case "voirEleves":
+                return <ListeEleves />;
+
+            case "voirEnseignants":
+                return <ListeEnseignants />;
+
             default:
                 return (
                     <>
                         <h2>Bienvenue sur votre tableau de bord {role}.</h2>
                         <p>Là, vous pourrez effectuer des actions sur votre compte.</p>
+                        <img  src={EtudiantImage} />
                     </>
                 )
         }

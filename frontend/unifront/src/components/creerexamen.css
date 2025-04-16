@@ -22,7 +22,7 @@
     color: #333;
     text-align: left;
 }
-.creer-examen-form button {
+.creer-examen-form .creer-examen-button {
     margin-top: 20px;
     padding: 15px;
     background-color: #007bff;
@@ -31,6 +31,10 @@
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+}
+
+.creer-examen-form .creer-examen-button:hover {
+    background-color: #0056b3;
 }
 
 .creer-examen-form{
@@ -65,7 +69,8 @@
     font-size: 16px;
 }
 
-.examen-buttons .voir {
+.examen-buttons .voir,
+.examen-buttons .voirExercice{
     background-color: beige;
     border: 2px solid #ccc;
     color: #333;
@@ -81,8 +86,9 @@
     background-color: #0056b3;
     color: #fff;
     border: none;
-}
-.examen-buttons .voir:hover {
+}       
+.examen-buttons .voir:hover,
+.examen-buttons .voirExercice:hover{
     background-color: #f0e68c;
 }
 
@@ -139,4 +145,16 @@
 
 .table-examens .supprimer:hover{
     background-color: #c82333;
+}
+
+.examen-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #e7eff8;
+    width: 700px;
+    border-radius: 10px;
+    margin-top: 50px;
 }

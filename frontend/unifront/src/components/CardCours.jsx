@@ -7,6 +7,7 @@ const CardCours = ({cours}) => {
     const { userData } = useAuth(); 
     const user_mail = userData.sub;
     const [user, setUser] = useState({});
+    const [isInscrit, setIsInscrit] = useState(cours.inscrit === 'oui');
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -32,7 +33,7 @@ const CardCours = ({cours}) => {
             });
             setSuccess("Inscription réussie!");
             setError("");
-            console.log(response.data);
+            setIsInscrit(true);
         } catch (error) {
             console.error(error);
             setError("Erreur lors de l'inscription!");
@@ -47,7 +48,11 @@ const CardCours = ({cours}) => {
             </div>
             <div className="card-cours-footer">
                 <span>{cours.cours.type}</span>
-                <button onClick={handleInscription} disabled={success !== ""}>S'incrire</button>
+                {isInscrit ? (
+                    <span className='inscrit'>Inscrit</span>
+                ) : (
+                    <button onClick={handleInscription} disabled={success !== ""}>S'inscrire</button>
+                )}
                 <span>{cours.cours.heures} Hrs</span>
             </div>
              {/* Affichage des alertes si elles existent */}

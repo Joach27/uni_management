@@ -119,6 +119,17 @@ class Examen(db.Model):
     cours_semestriel_id = db.Column(db.Integer, db.ForeignKey('cours_semestriel.id'), nullable=False)
     type_examen = db.Column(db.Enum('Partiel', 'Final', 'Rattrapage'), nullable=False)
     date = db.Column(db.Date, nullable=False)
+    
+    cours_semestriel = db.relationship("CoursSemestriel", backref="examens")
+
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'cours_semestriel_id': self.cours_semestriel_id,
+            'type_examen': self.type_examen,
+            'date': self.date
+        }
 
 class NoteExamen(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -126,6 +137,10 @@ class NoteExamen(db.Model):
     eleve_id = db.Column(db.Integer, db.ForeignKey('eleve.id'), nullable=False)
     note = db.Column(db.Float, nullable=False)
     explication = db.Column(db.Text)
+    
+    examen = db.relationship("Examen", backref="notes")
+    eleve = db.relationship("Eleve", backref="notes_examens")
+
 
 class Exercice(db.Model):
     id = db.Column(db.Integer, primary_key=True)

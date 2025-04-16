@@ -1,52 +1,75 @@
 /* Styles généraux */
 .register {
-    width: 350px;
+    width: 800px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 30px 40px;
     background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007BFF;
     text-align: center;
 }
 
-.register-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    gap: 15px;
+.register h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: normal;
+    font-size: 26px;
+    font-weight: bold;
 }
 
-.register h2 {
-    margin-bottom: 20px;
-    color: #333;
+/* Structure du formulaire */
+.register-form {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.register-first-part,
+.register-second-part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
 }
 
 /* Champs de saisie */
-.register-form input, .register-form select {
-    width: 93%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
+.register-form input, 
+.register-form select {
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+    border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
     transition: border 0.3s;
 }
 
-.register-form input:focus {
-    border: 1px solid #007bff;
-    outline: none;
+/* Style spécifique pour l'email et le mot de passe */
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    background-color: #f0f5ff;
 }
 
+.register-form input:focus,
 .register-form select:focus {
     border: 1px solid #007bff;
     outline: none;
 }
-/* Boutons */
+
+/* Style du select */
+.register-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+}
+
+/* Bouton */
 .register-form button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     background: #007bff;
     color: white;
     font-size: 16px;
@@ -67,10 +90,27 @@ p {
     font-weight: bold;
 }
 
-.login-link{
+.login-link {
     margin-top: 15px;
     color: #007bff;
     text-decoration: none;
     font-weight: 400;
     font-size: 12px;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 850px) {
+    .register {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .register-form {
+        flex-direction: column;
+    }
+    
+    .register-first-part,
+    .register-second-part {
+        width: 100%;
+    }
 }

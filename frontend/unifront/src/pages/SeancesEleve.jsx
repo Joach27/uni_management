@@ -55,7 +55,7 @@ const SeancesEleve = () => {
                             {seances.map(seance => (
                             <tr key={seance.id}>
                                 <td>{seance.description}</td>
-                                <td>{seance.duree}</td>
+                                <td>{seance.duree} Hrs</td>
                             </tr>
                             ))}
                         </tbody>

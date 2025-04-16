@@ -1,12 +1,15 @@
 import "./nav.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ role, onNavClick }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <div className="left-side">
         <Link to="/" style={{ textDecoration: "none" }}>
-            <h2>UniViz</h2>
+            <h2>UniVersity</h2>
         </Link>
       </div>
       <div className="right-side">
@@ -24,8 +27,8 @@ const Navbar = ({ role, onNavClick }) => {
             <li onClick={() => onNavClick("examen")}>
               Examens
             </li>
-            <li>
-              Notes
+            <li onClick={() => onNavClick("noteExamenEnseignant")}>
+              Notes examens
             </li>
           </ul>
         )}
@@ -50,7 +53,7 @@ const Navbar = ({ role, onNavClick }) => {
             <li onClick={() => onNavClick("voirExamens")}>
               Examens
             </li>
-            <li>
+            <li onClick={() => onNavClick("voirNote")}>
               Notes
             </li>
           </ul>
@@ -65,13 +68,15 @@ const Navbar = ({ role, onNavClick }) => {
             <li onClick={() => onNavClick("creerCoursSemestriel")}>
               Créer un cours semestriel
             </li>
+            <li onClick={() => onNavClick("voirEleves")}>
+              Elèves
+            </li>
+            <li onClick={() => onNavClick("voirEnseignants")}>
+              Enseignants
+            </li>
           </ul>
         )}
 
-        {/* <button className="logout" onClick={() => {
-      localStorage.removeItem("role");
-      window.location.href = "/login";
-  }}>Logout</button> */}
       </div>
 
       <button
@@ -79,7 +84,7 @@ const Navbar = ({ role, onNavClick }) => {
         onClick={() => {
           localStorage.removeItem("role");
           localStorage.removeItem("token");
-          window.location.href = "/login";
+          navigate("/login");
         }}
       >
         Deconnexion

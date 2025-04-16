@@ -35,49 +35,53 @@ const Register = () => {
         <div className="register">
             <h2>Inscription</h2>
             <form onSubmit={handleSubmit} className="register-form">
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <div className="register-first-part">
+                    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <select name="role" value={role} onChange={(e) => setRole(e.target.value)} required>
-                    <option value="">--- Role ---</option>
-                    <option value="Enseignant">Enseignant</option>
-                    <option value="Eleve">Eleve</option>
-                    <option value="Secretaire">Secretaire</option>
-                </select>
+                    <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <select name="role" value={role} onChange={(e) => setRole(e.target.value)} required>
+                        <option value="">--- Role ---</option>
+                        <option value="Enseignant">Enseignant</option>
+                        <option value="Eleve">Eleve</option>
+                        <option value="Secretaire">Secretaire</option>
+                    </select>
 
-                {role === "Enseignant" && (
-                    <>
-                    <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
+                    <button type="submit">Inscrire l'utilisateur</button>
+                </div>
 
-                    <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+                <div className="register-second-part">
+                    {role === "Enseignant" && (
+                        <>
+                        <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
 
-                    <input type="text" placeholder="Telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+                        <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
 
-                    <input type="text" placeholder="Fonction" value={fonction} onChange={(e) => setFonction(e.target.value)} />
-                    </>
-                )}
+                        <input type="text" placeholder="Telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
 
-                {role === "Eleve" && (
-                    <>
-                    <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
+                        <input type="text" placeholder="Fonction" value={fonction} onChange={(e) => setFonction(e.target.value)} />
+                        </>
+                    )}
 
-                    <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+                    {role === "Eleve" && (
+                        <>
+                        <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
 
-                    <input type="text" placeholder="Annee" value={annee} onChange={(e) => setAnnee(e.target.value)} />
-                    </>
-                )}
+                        <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
 
-                {role === "Secretaire" && (
-                    <>
-                    <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
+                        <input type="text" placeholder="Annee" value={annee} onChange={(e) => setAnnee(e.target.value)} />
+                        </>
+                    )}
 
-                    <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
+                    {role === "Secretaire" && (
+                        <>
+                        <input type="text" placeholder="Nom" value={nom} onChange={(e) => setNom(e.target.value)} />
 
-                    <input type="text" placeholder="Telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
-                    </>
-                )}
+                        <input type="text" placeholder="Prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} />
 
-                <button type="submit">S'inscrire</button>
+                        <input type="text" placeholder="Telephone" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+                        </>
+                    )}
+                </div>
             </form>
             {message && <p>{message}</p>}
         </div>

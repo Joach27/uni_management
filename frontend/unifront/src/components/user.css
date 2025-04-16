@@ -1,0 +1,82 @@
+.liste-eleves,
+.liste-enseignants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding-bottom: 50px;
+  color: #333;
+}
+
+
+.liste-eleves h2,
+.liste-enseignants h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.table-eleves,
+.table-enseignants {
+  width: 70%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-eleves th,
+.table-enseignants th {
+  /* background-color: #8e44ad;  */
+  background-color: #007bff; 
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.table-eleves td,
+.table-enseignants td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: left;
+}
+
+.table-eleves tr:nth-child(even),
+.table-enseignants tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+.table-eleves .modifier,
+.table-enseignants .modifier{
+  background-color: #007bff;
+  color: white;
+  border-radius: 25px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+}
+.table-eleves .modifier:hover,
+.table-enseignants .modifier:hover{
+  background-color: #0056b3;
+  color: white;
+  padding: 5px 10px;
+}
+
+.table-eleves .supprimer,
+.table-enseignants .supprimer{
+  background-color: #dc3545;
+  color: white;
+    margin-right: 5px;  
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+.table-eleves .supprimer:hover,
+.table-enseignants .supprimer:hover{
+  background-color: #c82333;
+  color: white;
+  padding: 5px 10px;
+}

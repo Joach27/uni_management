@@ -21,7 +21,7 @@
    cursor: pointer;
 }
 
-.navbar button{
+.navbar .logout{
     background-color: #007bff;
     color: white;
     border: none;

@@ -5,6 +5,11 @@ from models import db
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 
+from note_examen_bp import examen_bp  # le blueprint défini plus haut
+
+app.register_blueprint(examen_bp)
+
+
 bcrypt = Bcrypt()
 jwt = JWTManager()
 

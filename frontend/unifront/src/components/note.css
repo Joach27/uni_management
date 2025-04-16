@@ -1,0 +1,130 @@
+.attribution-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding-bottom: 50px;
+}
+
+.form-creation-note {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  gap: 10px;
+}
+.form-creation-note input,
+.form-creation-note select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  transition: border 0.3s;
+  box-sizing: border-box;
+}
+
+.form-creation-note label {
+  color: #333;
+  text-align: left;
+}
+
+.form-creation-note input:focus,
+.form-creation-note select:focus {
+  border: 1px solid #007bff;
+  outline: none;
+}
+
+.form-creation-note button {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Notes enseignanat et notes eleve */
+.notes-examens-enseignant,
+.notes-examen-eleve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  padding-bottom: 50px;
+  color: #333;
+}
+
+.notes-examens-enseignant h2,
+.notes-examen-eleve h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.table-examens-enseignant,
+.table-examens-eleve {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-examens-enseignant th,
+.table-examens-eleve th {
+  /* background-color: #8e44ad;  */
+  background-color: #007bff; 
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.table-examens-enseignant td,
+.table-examens-eleve td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.table-examens-enseignant tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+/* La dernière colonne a un fond blanc */
+.table-examens-enseignant td:last-child {
+  background-color: white;
+}
+
+
+
+.table-examens-enseignant .modifier{
+  background-color: #007bff;
+  color: white;
+  border-radius: 25px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+}
+.table-examens-enseignant .modifier:hover{
+  background-color: #0056b3;
+  color: white;
+  padding: 5px 10px;
+}
+
+.table-examens-enseignant .supprimer{
+  background-color: #dc3545;
+  color: white;
+    margin-right: 5px;  
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+.table-examens-enseignant .supprimer:hover{
+  background-color: #c82333;
+  color: white;
+  padding: 5px 10px;
+}

@@ -43,6 +43,7 @@
     border: 1px solid #ddd; /* Bordure grise */
     padding: 8px; /* Espacement autour du texte */
     text-align: left;
+    color: #333; /* Couleur du texte */
   }
   
   /* Style au survol des lignes */
@@ -52,12 +53,18 @@
   }
   
 
-.btn-soumettre{
-    background-color: transparent;
+.table-exercices .btn-soumettre{
     color: #333;
     border: 2px solid blueviolet;
+    background: transparent;
     border-radius: 25px;
     cursor: pointer;
     font-size: 13px;
     padding: 7px 14px; 
+}
+
+.table-exercices .btn-soumettre:hover{
+    background-color: blueviolet;
+    color: #fff;
+    border: none;
 }

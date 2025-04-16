@@ -21,8 +21,8 @@
 .card-cours-footer span{    
     font-size: 1.2rem;
     color: #333;
-    padding: 5px;
-    border: 1px solid #333;
+    padding: 5px 15px;
+    border: 2px solid #ccc;
     border-radius: 25px;
 }
 
@@ -60,4 +60,9 @@
 
 .cours h2{
     margin-bottom: 15px;
+}
+
+.card-cours-footer .inscrit{
+    background-color: aquamarine;
+    border: none;
 }

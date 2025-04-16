@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './creerexamen.css'
+import './creerexamen.css';
+import ExamenModal from "./ExamenModal";
 
 
 const VoirExamen = () => {
@@ -8,23 +9,62 @@ const VoirExamen = () => {
     const [loading, setLoading] = useState(true);   
     const [error, setError] = useState(null);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedExamen, setSelectedExamen] = useState(null);
+
+    const [modalError, setModalError] = useState(null);
+
+    const fetchExamens = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/enseignant/examens', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            setExamens(response.data);
+            setLoading(false);
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchExamens = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/enseignant/examens', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-                setExamens(response.data);
-                setLoading(false);
-            } catch (error) {
-                setError(error.message);
-                setLoading(false);
-            }
-        };
         fetchExamens();
     }, []);
+
+    const openModal = (examen) => {
+        setSelectedExamen(examen);
+        setIsModalOpen(true);
+    };
+
+    const handleSave = async (updatedExamen) => {
+        try {
+            await axios.put(`http://localhost:5000/api/examen/${updatedExamen.id}`, updatedExamen, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }       
+            });
+            fetchExamens(); // Refresh the list after saving    
+        } catch (error) {
+            setModalError(error.message);
+        }
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/examen/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            fetchExamens(); // Refresh the list after deleting
+        } catch (error) {
+            setModalError(error.message);
+        }
+    };  
 
     return (
         <div className="voir-examen-container">
@@ -52,8 +92,8 @@ const VoirExamen = () => {
                                     <td>{examen.date}</td>
                                     <td>{examen.cours.titre}</td>
                                     <td>
-                                        <button className="modifier">Modifier</button>
-                                        <button className="supprimer">Supprimer</button>
+                                        <button onClick={() => openModal(examen)} className="modifier">Modifier</button>
+                                        <button onClick={() => handleDelete(examen.id)} className="supprimer">Supprimer</button>
                                     </td>
                                 </tr>
                             ))}
@@ -62,8 +102,17 @@ const VoirExamen = () => {
                     </table>
                 )
             }
+
+            {modalError && <p className="error">{modalError}</p>}            
+
+            <ExamenModal
+                isOpen={isModalOpen}
+                examen={selectedExamen}
+                onClose={() => setIsModalOpen(false)}
+                onSave={handleSave}
+            />
         </div>
     );
-}
+};
 
 export default VoirExamen;
