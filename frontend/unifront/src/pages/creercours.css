@@ -31,7 +31,7 @@
     text-align: left;
 }
 
-.form-creation-cours button {
+.form-creation-cours .btn-creer-cours {
     padding: 15px;
     background-color: #007bff;
     color: #fff;
@@ -76,7 +76,7 @@
 }
 
 .form-creation-cours-semestriel button,
-.form-creer-seance button {
+.form-creer-seance > button {
     margin-top: 20px;
     padding: 15px;
     background-color: #007bff;

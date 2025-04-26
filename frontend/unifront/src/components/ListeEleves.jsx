@@ -57,6 +57,7 @@ const ListeEleves = () => {
             });
             setEleves(eleves.filter((eleve) => eleve.id !== id));
             setDeleteSuccess("Élève supprimé avec succès!");
+            fetchEleves();
         } catch (error) {
 
             setDeleteError(error.message);

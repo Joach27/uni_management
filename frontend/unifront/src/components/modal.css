@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-label {
+.modal label {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -40,8 +40,8 @@ label {
   text-align: left;
 }
 
-input,
-select {
+.modal input,
+.modal select {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -50,8 +50,8 @@ select {
   transition: border-color 0.2s;
 }
 
-input:focus,
-select:focus {
+.modal input:focus,
+.modal select:focus {
   border-color: #4a90e2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
@@ -59,11 +59,11 @@ select:focus {
 
 .modal-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 20px;
 }
 
-button {
+.modal-buttons > button {
   padding: 10px 20px;
   font-size: 14px;
   border-radius: 6px;
@@ -72,23 +72,29 @@ button {
   transition: background-color 0.2s ease-in-out;
 }
 
-button:first-child {
+.modal-valider-button {
   background-color: #007BFF;
   color: white;
   margin-right: 10px;
 }
 
-button:first-child:hover {
+.modal-valider-button:hover {
   background-color: #0056b3;
 }
 
-button:last-child {
+.modal-annuler-button {
   background-color: #f44336;
   color: white;
 }
 
-button:last-child:hover {
+.modal-annuler-button:hover {
   background-color: #e53935;
+}
+
+#modal-annuler{
+  background-color: #f44336;
+  color: white;
+  margin-right: 10px;
 }
 
 /* Animation */

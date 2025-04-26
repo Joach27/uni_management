@@ -843,16 +843,16 @@ jwt = JWTManager()
 #     return jsonify({'message': 'Eleve enregistré avec succès!'}), 201
 
 @app.route('/inscription', methods=['POST'])
-@jwt_required
+# @jwt_required()
 def inscrire():
     data = request.get_json()
     user = Utilisateur.query.filter_by(email=data['email']).first()
     
     # Accès
-    user_mail = get_jwt_identity()
-    Utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
-    if not Utilisateur or Utilisateur.role != 'Secretaire':
-        return jsonify({'message': 'Accès non autorisé'}), 403
+    # user_mail = get_jwt_identity()
+    # Utilisateur = Utilisateur.query.filter_by(email=user_mail).first()
+    # if not Utilisateur or Utilisateur.role != 'Secretaire':
+    #     return jsonify({'message': 'Accès non autorisé'}), 403
     
     if user: 
         return jsonify({'message': 'Un utilisateur avec cet email existe déjà!'}), 400

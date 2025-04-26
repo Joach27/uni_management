@@ -53,9 +53,9 @@ const ExamenModal = ({ isOpen, onClose, examen, onSave }) => {
           />
         </label>
 
-        <div style={{ marginTop: '15px' }}>
-          <button onClick={handleSubmit}>Valider</button>
-          <button onClick={onClose} style={{ marginLeft: '10px' }}>Annuler</button>
+        <div style={{ marginTop: '15px' }} className='modal-buttons'>
+          <button onClick={handleSubmit} className='modal-valider-button'>Valider</button>
+          <button className='modal-annuler-button' onClick={onClose} style={{ marginLeft: '10px' }}>Annuler</button>
         </div>
       </div>
     </div>

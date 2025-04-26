@@ -44,7 +44,7 @@ form input:focus {
 }
 
 /* Boutons */
-.login-form button {
+.login .login-button {
     width: 100%;
     padding: 10px;
     background: #007bff;
@@ -56,7 +56,7 @@ form input:focus {
     transition: background 0.3s;
 }
 
-.login-form button:hover {
+.login .login-button:hover {
     background: #0056b3;
 }
 

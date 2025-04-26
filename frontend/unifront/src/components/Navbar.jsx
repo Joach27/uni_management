@@ -24,6 +24,9 @@ const Navbar = ({ role, onNavClick }) => {
             <li onClick={() => onNavClick("creerExercice")}>
               Poser un exercice
             </li>
+            {/* <li onClick={() => onNavClick("questions")}>
+              Questions
+            </li> */}
             <li onClick={() => onNavClick("examen")}>
               Examens
             </li>

@@ -72,7 +72,7 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="login-form">
                 <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">Se connecter</button>
+                <button type="submit" className="login-button">Se connecter</button>
             </form>
             {message && <p>{message}</p>}
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './register.css';
 import { register } from "../api";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -15,16 +15,24 @@ const Register = () => {
     const [fonction, setFonction] = useState("");
     const [annee, setAnnee] = useState("");
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await register(prenom, nom, email, password, role, telephone, fonction, annee);
-            setMessage("Inscription réussie");
-            setTimeout(() => {
-                navigate("/login");
-            }, 2000);
+            setMessage("Inscription");
+            // setTimeout(() => {
+            //     navigate("/login");
+            // }, 2000);
+            setEmail("");
+            setPassword("");
+            setNom("");
+            setPrenom("");
+            setRole("");
+            setTelephone("");
+            setFonction("");
+            setAnnee("");
         }
         catch (error) {
             setMessage(error.response.data || "Erreur lors de l'incription");

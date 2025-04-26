@@ -21,6 +21,7 @@ import ExamenEtudiant from "../components/ExamenEtudiant";
 import ListeEleves from "../components/ListeEleves";
 import ListeEnseignants from "../components/ListeEnseignants";
 import EtudiantImage from '../assets/étudiants-av.png';
+import QuestionEnseignant from "../components/QuestionEnseignant";
 
 
 
@@ -44,8 +45,8 @@ const Dashboard = () => {
                 return <NoteExamen />;
             case "creerSeance":
                 return <CreerSeance />;
-            case "modifierNoteExercice":
-                return <p>Vous avez choisi de modifier la note d'un exercice.</p>;
+            // case "questions":
+            //     return <QuestionEnseignant />;
             case "modifierNoteExamen":
                 return <p>Vous avez choisi de modifier la note d'un examen.</p>;
             // case "voirCours":

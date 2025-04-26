@@ -159,7 +159,7 @@ def creer_note_examen(examen_id):
     if note_existante:
         return jsonify({
             'success': False,
-            'message': 'Une note existe déjà pour cet élève. Utilisez la méthode PUT pour la modifier.',
+            'message': 'Une note existe déjà pour cet élève. Vous pouvez la modifier.',
             'note_id': note_existante.id
         }), 409  # Conflict HTTP status
     

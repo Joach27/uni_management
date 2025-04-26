@@ -82,7 +82,7 @@ const CreerCours = () => {
                     onChange={handleChange} 
                 />
 
-                <button type="submit">Créer le cours</button>
+                <button className="btn-creer-cours" type="submit">Créer le cours</button>
 
                 {success && <p style={{ color: "blue", fontSize: "14px" }}>{success}</p>}
                 {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}

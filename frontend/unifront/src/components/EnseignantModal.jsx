@@ -58,9 +58,9 @@ const EnseignantModal = ({ isOpen, onClose, enseignant, onSave }) => {
           </select>
         </label>
 
-        <div style={{ marginTop: '15px' }}>
-          <button onClick={handleSubmit}>Valider</button>
-          <button onClick={onClose} style={{ marginLeft: '10px' }}>Annuler</button>
+        <div style={{ marginTop: '15px' }} className='modal-buttons'>
+          <button onClick={handleSubmit} className='modal-valider-button' >Valider</button>
+          <button onClick={onClose} style={{ marginLeft: '10px'}} id='modal-annuler' className='modal-annuler-button'>Annuler</button>
         </div>
       </div>
     </div>
